@@ -6,9 +6,10 @@ plugins {
   alias(libs.plugins.eclipseApt) apply false
   alias(libs.plugins.spotless)
   id "eclipse"
+  id "idea"
 }
 
-group = "net.kyori"
+group = "net.deltapvp"
 version = "3.1.0-SNAPSHOT"
 description = "KyoriPowered organizational build standards and utilities"
 
@@ -35,13 +36,13 @@ subprojects {
     }
   }
 
-  if ('true' == project.findProperty("skipFunctionalTests")) {
-    tasks.named('test') {
-      useJUnitPlatform {
-        excludeTags 'functional'
-      }
-    }
-  }
+//  if ('true' == project.findProperty("skipFunctionalTests")) {
+//    tasks.named('test') {
+//      useJUnitPlatform {
+//        excludeTags 'functional'
+//      }
+//    }
+//  }
 
   indra {
     github("KyoriPowered", "indra") {
@@ -89,6 +90,6 @@ subprojects {
       }
     }
 
-    publishSnapshotsTo("stellardrift", "https://repo.stellardrift.ca/repository/snapshots/")
+    publishSnapshotsTo("deltapvp", "https://reposilite.deltapvp.net/snapshots/")
   }
 }
