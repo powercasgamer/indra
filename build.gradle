@@ -90,6 +90,6 @@ subprojects {
       }
     }
 
-    publishSnapshotsTo("deltapvp", "https://reposilite.deltapvp.net/snapshots/")
+    publishSnapshotsTo("delta", "https://reposilite.deltapvp.net/snapshots/")
   }
 }
