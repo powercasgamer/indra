@@ -16,6 +16,10 @@
 /*/bin/
 /.project
 /.settings/
-
+*.iml
+.idea
+.iml
+.ipr
+.iws
 # Testing
 indra-testlib/src/main/resources/injected-gradle-versions
