@@ -36,13 +36,14 @@ subprojects {
     }
   }
 
-//  if ('true' == project.findProperty("skipFunctionalTests")) {
-//    tasks.named('test') {
-//      useJUnitPlatform {
-//        excludeTags 'functional'
-//      }
-//    }
-//  }
+//  if (!project.findProperty("skipFunctionalTests")) {
+ if (!project.findProperty("runFunctionalTests")) {
+   tasks.named('test') {
+     useJUnitPlatform {
+       excludeTags 'functional'
+     }
+   }
+ }
 
   indra {
     github("KyoriPowered", "indra") {
