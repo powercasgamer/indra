@@ -31,6 +31,7 @@ import java.nio.file.Files;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 import javax.inject.Inject;
 import net.kyori.indra.IndraExtension;
 import net.kyori.indra.JavaToolchainVersions;
@@ -44,6 +45,7 @@ import net.kyori.mammoth.Properties;
 import org.gradle.api.Action;
 import org.gradle.api.DomainObjectSet;
 import org.gradle.api.GradleException;
+import org.gradle.api.Project;
 import org.gradle.api.file.ProjectLayout;
 import org.gradle.api.logging.Logger;
 import org.gradle.api.logging.Logging;
@@ -201,6 +203,13 @@ public class IndraExtensionImpl implements IndraExtension {
   @Override
   public void publishSnapshotsTo(final @NotNull String id, final @NotNull String url) {
     this.repositories.add(RemoteRepository.snapshotsOnly(id, url));
+  }
+
+  @Override
+  public void publishTo(final @NotNull String id, final @NotNull String url, final @NotNull Predicate<Project> predicate) {
+    if (predicate.test(this.signingExtension.getProject())) { // idk
+      this.repositories.add(RemoteRepository.snapshotsOnly(id, url)); // not all
+    }
   }
 
   @Override

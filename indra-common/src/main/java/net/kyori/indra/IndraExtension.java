@@ -30,10 +30,13 @@ import net.kyori.indra.api.model.License;
 import net.kyori.indra.api.model.SourceCodeManagement;
 import net.kyori.mammoth.Configurable;
 import org.gradle.api.Action;
+import org.gradle.api.Project;
 import org.gradle.api.provider.Property;
 import org.gradle.api.publish.maven.MavenPublication;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Predicate;
 
 import static java.util.Objects.requireNonNull;
 
@@ -155,6 +158,8 @@ public interface IndraExtension {
   void publishReleasesTo(final @NotNull String id, final @NotNull String url);
 
   void publishSnapshotsTo(final @NotNull String id, final @NotNull String url);
+
+  void publishTo(final @NotNull String id, final @NotNull String url, final @NotNull Predicate<Project> predicate);
 
   void configurePublications(final @NotNull Action<MavenPublication> action);
 
